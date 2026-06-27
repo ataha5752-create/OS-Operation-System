@@ -3248,20 +3248,28 @@
     // Wire up Login Demo Button
     const demoBtn = document.getElementById('loginDemoBtn');
     if (demoBtn) {
-        demoBtn.onclick = () => {
-            localStorage.setItem('ops_demo_mode', 'true');
-            sessionStorage.setItem('ops_jwt', 'demo-jwt-token-123456');
-            
-            // Set default active user as admin in demo mode
-            const demoUser = { id: 'u_1', username: 'admin', role: 'admin', allowed_depts: [], allowed_tabs: [] };
-            sessionStorage.setItem('ops_user', JSON.stringify(demoUser));
-            activeUser = demoUser;
-            
-            setProfileUI();
-            showLoginOverlay(false);
-            refreshData();
-            showWelcomeSplash('admin (Offline Demo)');
-        };
+        const isLocal = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1' || 
+                        window.location.hostname === '[::1]' || 
+                        window.location.protocol === 'file:';
+        if (!isLocal) {
+            demoBtn.style.display = 'none';
+        } else {
+            demoBtn.onclick = () => {
+                localStorage.setItem('ops_demo_mode', 'true');
+                sessionStorage.setItem('ops_jwt', 'demo-jwt-token-123456');
+                
+                // Set default active user as admin in demo mode
+                const demoUser = { id: 'u_1', username: 'admin', role: 'admin', allowed_depts: [], allowed_tabs: [] };
+                sessionStorage.setItem('ops_user', JSON.stringify(demoUser));
+                activeUser = demoUser;
+                
+                setProfileUI();
+                showLoginOverlay(false);
+                refreshData();
+                showWelcomeSplash('admin (Offline Demo)');
+            };
+        }
     }
 
     async function performLogin() {
