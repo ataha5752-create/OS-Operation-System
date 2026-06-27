@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Operation System - WE Corporate Light Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            
+            /* WE Corporate Identity Colors */
+            --we-purple: #4f2683;
+            --we-purple-light: #7a4bb7;
+            --we-accent: #ff6b00; /* WE Orange accent */
+            --we-green: #10b981;
+            
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --shadow-sm: 0 1px 3px rgba(79, 38, 131, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(79, 38, 131, 0.08), 0 2px 4px -1px rgba(79, 38, 131, 0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(79, 38, 131, 0.1), 0 4px 6px -2px rgba(79, 38, 131, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-family: 'Poppins', 'Cairo', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Corporate Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            border-bottom: 3px solid var(--we-purple);
+            padding: 15px 40px;
+            box-shadow: var(--shadow-md);
+            z-index: 20;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .we-logo-circle {
+            width: 42px;
+            height: 42px;
+            background: var(--we-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(79, 38, 131, 0.3);
+        }
+
+        .logo-text h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--we-purple);
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-sector {
+            background: #f1ecf9;
+            border: 1px solid rgba(79, 38, 131, 0.2);
+            color: var(--we-purple);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Workspace Grid */
+        .workspace {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            padding: 25px;
+            gap: 25px;
+        }
+
+        /* Sidebar - Light Corporate Theme */
+        .sidebar {
+            width: 320px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sidebar-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--we-purple);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f1ecf9;
+            padding-bottom: 8px;
+        }
+
+        .slide-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .slide-section-divider {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-top: 10px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .slide-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--text-dark);
+            background: #f8fafc;
+        }
+
+        .slide-item:hover {
+            background: #f1ecf9;
+            color: var(--we-purple);
+        }
+
+        .slide-item.active {
+            background: var(--we-purple);
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: var(--shadow-md);
+        }
+
+        .slide-tag {
+            font-size: 9px;
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--we-accent);
+            border: 1.5px solid var(--we-accent);
+            padding: 1px 5px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .slide-item.active .slide-tag {
+            background: #ffffff;
+            color: var(--we-purple);
+            border-color: #ffffff;
+        }
+
+        /* Slide Content Display Area */
+        .content-panel {
+            flex: 1;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .panel-header {
+            background: #f1ecf9;
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 30px;
+        }
+
+        .query-bar {
+            color: var(--we-purple);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Slide Body Display */
+        .slides-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 100%;
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        /* Two-Column Deck Layout */
+        .slide-layout {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .text-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--we-purple);
+            margin-bottom: 4px;
+        }
+
+        .slide-subtitle {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--we-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        /* Bullet detail boxes */
+        .deck-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .deck-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px 22px;
+            transition: all 0.25s;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .deck-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--we-purple);
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        .deck-card.orange-accent::before {
+            background: var(--we-accent);
+        }
+
+        .deck-card.green-accent::before {
+            background: var(--we-green);
+        }
+
+        .deck-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            border-color: rgba(79, 38, 131, 0.2);
+        }
+
+        .deck-card-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--we-purple);
+            margin-bottom: 6px;
+        }
+
+        .deck-card-desc {
+            font-size: 12px;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Schematic Graphic Column */
+        .graphic-column {
+            height: 380px;
+            background: #f8fafc;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .schematic-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* SVG Color Styles (Light Corporate) */
+        .svg-purple {
+            stroke: var(--we-purple);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .svg-orange {
+            stroke: var(--we-accent);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .svg-green {
+            stroke: var(--we-green);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Table styles inside light cards */
+        .corporate-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .corporate-table th {
+            text-align: left;
+            padding: 10px;
+            color: var(--we-purple);
+            border-bottom: 2px solid var(--we-purple);
+            background: #f1ecf9;
+            font-weight: 700;
+        }
+
+        .corporate-table td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-dark);
+        }
+
+        .corporate-table tr:hover td {
+            background: #f8fafc;
+        }
+
+        /* Slide 16 Team Roster Styles */
+        .team-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .team-directory {
+            width: 100%;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            min-height: 250px;
+        }
+
+        .directory-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 25px;
+        }
+
+        .directory-section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--we-purple);
+            border-bottom: 2px solid var(--we-purple);
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .member-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow-sm);
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .member-card.loaded {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.4s ease;
+        }
+
+        .member-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .member-name {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--we-purple);
+        }
+
+        .member-title {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .status-badge {
+            font-size: 9px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            background: #f1ecf9;
+            color: var(--we-purple);
+            border: 1px solid rgba(79, 38, 131, 0.2);
+        }
+
+        .load-directory-btn {
+            background: var(--we-purple);
+            color: #ffffff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(79, 38, 131, 0.2);
+            transition: all 0.2s;
+            align-self: center;
+        }
+
+        .load-directory-btn:hover {
+            background: var(--we-purple-light);
+            box-shadow: 0 6px 15px rgba(79, 38, 131, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* Bottom Controls Bar */
+        .app-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px 40px;
+            border-radius: 12px;
+            margin: 0 25px 25px 25px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-btn {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            color: var(--we-purple);
+            padding: 8px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--we-purple);
+            color: #ffffff;
+            border-color: var(--we-purple);
+        }
+
+        .indicators {
+            display: flex;
+            gap: 6px;
+        }
+
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .indicator-dot.active {
+            background-color: var(--we-purple);
+            transform: scale(1.2);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-block">
+            <div class="we-logo-circle">we</div>
+            <div class="logo-text">
+                <h1>WE OPS PORTAL</h1>
+                <p>Canal Cities, Sinai & Red Sea Transmission Department</p>
+            </div>
+        </div>
+        <div class="badge-sector">TE_WE // INTRANET_SECURE</div>
+    </header>
+
+    <!-- Workspace -->
+    <div class="workspace">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-title">Presentation Modules</div>
+            <ul class="slide-list">
+                <li class="slide-section-divider">01 // Initialization</li>
+                <li class="slide-item active" data-slide="0">
+                    <span>Overview & Vision</span>
+                    <span class="slide-tag">01</span>
+                </li>
+                <li class="slide-item" data-slide="1">
+                    <span>System Architecture</span>
+                    <span class="slide-tag">02</span>
+                </li>
+                <li class="slide-item" data-slide="2">
+                    <span>Database Design</span>
+                    <span class="slide-tag">03</span>
+                </li>
+                <li class="slide-item" data-slide="3">
+                    <span>System Security</span>
+                    <span class="slide-tag">04</span>
+                </li>
+
+                <li class="slide-section-divider">02 // Features</li>
+                <li class="slide-item" data-slide="4">
+                    <span>User Experience</span>
+                    <span class="slide-tag">05</span>
+                </li>
+                <li class="slide-item" data-slide="5">
+                    <span>Monitoring Dashboard</span>
+                    <span class="slide-tag">06</span>
+                </li>
+                <li class="slide-item" data-slide="6">
+                    <span>Kanban Dispatcher</span>
+                    <span class="slide-tag">07</span>
+                </li>
+                <li class="slide-item" data-slide="7">
+                    <span>Scheduling & SLA</span>
+                    <span class="slide-tag">08</span>
+                </li>
+                <li class="slide-item" data-slide="8">
+                    <span>Analytics Insights</span>
+                    <span class="slide-tag">09</span>
+                </li>
+
+                <li class="slide-section-divider">03 // Operations</li>
+                <li class="slide-item" data-slide="9">
+                    <span>Preventive Routines</span>
+                    <span class="slide-tag">10</span>
+                </li>
+                <li class="slide-item" data-slide="10">
+                    <span>Engineer Evaluation</span>
+                    <span class="slide-tag">11</span>
+                </li>
+                <li class="slide-item" data-slide="11">
+                    <span>RTC Communication</span>
+                    <span class="slide-tag">12</span>
+                </li>
+                <li class="slide-item" data-slide="12">
+                    <span>Offline Capabilities</span>
+                    <span class="slide-tag">13</span>
+                </li>
+                <li class="slide-item" data-slide="13">
+                    <span>Audit & Integrity</span>
+                    <span class="slide-tag">14</span>
+                </li>
+                <li class="slide-item" data-slide="14">
+                    <span>Recent Upgrades</span>
+                    <span class="slide-tag">15</span>
+                </li>
+
+                <li class="slide-section-divider">04 // Team Directory</li>
+                <li class="slide-item" data-slide="15">
+                    <span>Project Partners</span>
+                    <span class="slide-tag">16</span>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Display Panel -->
+        <main class="content-panel">
+            <div class="panel-header">
+                <div class="query-bar">
+                    <span>Portal Section: </span>
+                    <span id="section-query-title" style="color: var(--we-accent);">Overview & Vision</span>
+                </div>
+            </div>
+
+            <div class="slides-container">
+                
+                <!-- SLIDE 1: Overview & Vision -->
+                <div class="slide active">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">OS Operation System</h2>
+                            <p class="slide-subtitle">Centralized Transmission Operations Portal</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Centralized Control Roster</div>
+                                    <p class="deck-card-desc">An executive web portal designed to monitor transmission network faults, coordinate engineer dispatches, and log operations dynamically across Egypt's canal and red sea sectors.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">Operational Benefits</div>
+                                    <p class="deck-card-desc">Drastically cuts downtime through instant reporting, geographic GIS overlays, gamified engineer scoring, and automated preventive task creators.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- High Contrast Purple/Orange Vector Graphic -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" stroke-width="3"/>
+                                <path d="M 50 10 A 40 40 0 0 1 90 50" fill="none" stroke="var(--we-purple)" stroke-width="4" stroke-linecap="round"/>
+                                <path d="M 90 50 A 40 40 0 0 1 50 90" fill="none" stroke="var(--we-accent)" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="50" cy="50" r="20" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+                                <circle cx="50" cy="50" r="5" fill="var(--we-purple)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2: Architecture -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">System Architecture</h2>
+                            <p class="slide-subtitle">SaaS-Grade Technology Stack</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Engine Layer (Node.js & Express)</div>
+                                    <p class="deck-card-desc">Operates on a highly stable Node.js backend. Serves as the central router for APIs and establishes WebSockets pipelines for real-time dashboards.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">Database (SQLite 3)</div>
+                                    <p class="deck-card-desc">Uses a relational single-file database. Provides simple backups and instant system cloning without needing to configure complex database engines.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- High Contrast Flowchart -->
+                            <svg class="schematic-svg" viewBox="0 0 120 100">
+                                <rect x="5" y="30" width="30" height="40" rx="6" fill="#ffffff" stroke="var(--we-purple)" stroke-width="2"/>
+                                <text x="20" y="52" fill="var(--we-purple)" font-size="7" text-anchor="middle" font-weight="bold">CLIENT</text>
+                                
+                                <path d="M 35 50 L 55 50" stroke="var(--we-accent)" stroke-width="2" stroke-dasharray="3,2"/>
+                                
+                                <rect x="55" y="20" width="35" height="60" rx="8" fill="#ffffff" stroke="var(--we-purple)" stroke-width="2"/>
+                                <text x="72.5" y="42" fill="var(--we-purple)" font-size="7" text-anchor="middle" font-weight="bold">EXPRESS</text>
+                                <text x="72.5" y="54" fill="var(--we-accent)" font-size="6" text-anchor="middle">APIs</text>
+                                
+                                <path d="M 90 50 L 100 50" stroke="var(--we-accent)" stroke-width="2"/>
+                                
+                                <rect x="100" y="35" width="16" height="30" rx="3" fill="#ffffff" stroke="var(--we-purple)" stroke-width="2"/>
+                                <text x="108" y="52" fill="var(--we-purple)" font-size="6" text-anchor="middle" font-weight="bold">SQLite</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 3: Database Schema -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">Relational Database Design</h2>
+                            <p class="slide-subtitle">Schema Architecture & Tables</p>
+                            <div class="deck-card" style="padding: 10px;">
+                                <table class="corporate-table">
+                                    <thead>
+                                        <tr>
+                                            <th>DB TABLE</th>
+                                            <th>PRIMARY KEY</th>
+                                            <th>SCHEMA SCOPE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>users</td>
+                                            <td>id (TEXT)</td>
+                                            <td>Hashed credentials, role scopes, regions permissions.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>entries</td>
+                                            <td>id (TEXT)</td>
+                                            <td>Operational faults, assignees, subtasks, files list.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>hierarchy</td>
+                                            <td>id (TEXT)</td>
+                                            <td>Sectors, subcategories, equipment station mapping.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>audit_logs</td>
+                                            <td>id (TEXT)</td>
+                                            <td>Security logs tracking usernames, revisions, timestamps.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Relational Diagram -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <rect x="5" y="15" width="35" height="25" rx="3" fill="#ffffff" stroke="var(--we-purple)" stroke-width="1.5"/>
+                                <text x="22.5" y="27" fill="var(--we-purple)" font-size="6" text-anchor="middle" font-weight="bold">users</text>
+                                <line x1="5" y1="30" x2="40" y2="30" stroke="var(--we-purple)" stroke-width="1"/>
+
+                                <rect x="60" y="15" width="35" height="25" rx="3" fill="#ffffff" stroke="var(--we-purple)" stroke-width="1.5"/>
+                                <text x="77.5" y="27" fill="var(--we-purple)" font-size="6" text-anchor="middle" font-weight="bold">entries</text>
+                                <line x1="60" y1="30" x2="95" y2="30" stroke="var(--we-purple)" stroke-width="1"/>
+
+                                <line x1="40" y1="27" x2="60" y2="27" stroke="var(--we-accent)" stroke-width="1.5" stroke-dasharray="2,2"/>
+                                
+                                <rect x="30" y="60" width="40" height="25" rx="3" fill="#ffffff" stroke="var(--we-purple)" stroke-width="1.5"/>
+                                <text x="50" y="72" fill="var(--we-purple)" font-size="6" text-anchor="middle" font-weight="bold">hierarchy</text>
+                                <line x1="30" y1="75" x2="70" y2="75" stroke="var(--we-purple)" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 4: Security -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">System Security & RBAC</h2>
+                            <p class="slide-subtitle">Credential Hashing & Roles Permissions</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Bcrypt Hashing</div>
+                                    <p class="deck-card-desc">Ensures secure local password hashes in sqlite database, keeping engineer profiles shielded.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">JWT Tokens</div>
+                                    <p class="deck-card-desc">Authenticates browser connections using JSON Web Tokens (JWT) stored safely in session storage with auto-timeouts.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Shield and lock -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <path d="M 50 15 C 65 15, 80 20, 80 20 L 80 50 C 80 70, 65 82, 50 88 C 35 82, 20 70, 20 50 L 20 20 C 20 20, 35 15, 50 15 Z" fill="rgba(79, 38, 131, 0.05)" stroke="var(--we-purple)" stroke-width="2"/>
+                                <circle cx="50" cy="46" r="10" fill="none" stroke="var(--we-accent)" stroke-width="2"/>
+                                <path d="M 45 46 L 45 39 A 5 5 0 0 1 55 39 L 55 46" fill="none" stroke="var(--we-accent)" stroke-width="1.5"/>
+                                <rect x="42" y="46" width="16" height="12" rx="2" fill="var(--we-accent)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 5: UI/UX -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">User Experience & Portal</h2>
+                            <p class="slide-subtitle">Sleek Brand Typography & Layouts</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Intranet Theme System</div>
+                                    <p class="deck-card-desc">Provides slate, violet and light mode theme selectors. Features clean glassmorphism tiles for easier reading.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">English/Arabic Layout toggles</div>
+                                    <p class="deck-card-desc">Adapts grid columns and writing directions instantly. Loads Google Fonts Cairo & Poppins natively.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Wireframe layout -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <rect x="10" y="20" width="80" height="60" rx="8" fill="#ffffff" stroke="var(--we-purple)" stroke-width="2"/>
+                                <rect x="15" y="30" width="22" height="42" rx="3" fill="#f8fafc" stroke="var(--border-color)" stroke-width="1"/>
+                                <rect x="42" y="30" width="42" height="12" rx="3" fill="#f8fafc" stroke="var(--border-color)" stroke-width="1"/>
+                                <rect x="42" y="46" width="42" height="26" rx="3" fill="#f1ecf9" stroke="var(--we-purple)" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 6: Dashboard -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">Monitoring Dashboard</h2>
+                            <p class="slide-subtitle">Real-time Station Telemetry</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Live counters metrics</div>
+                                    <p class="deck-card-desc">Summarizes system health instantly: total faults, completed jobs, delayed rate, and active SLA metrics.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">Geographical Tree filter</div>
+                                    <p class="deck-card-desc">Interactive station node tree allows filtering regional cabinets (Sinai, Suez) with a single click.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Metric dials -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <circle cx="30" cy="50" r="16" fill="none" stroke="#e2e8f0" stroke-width="4"/>
+                                <path d="M 30 34 A 16 16 0 1 1 14 50" fill="none" stroke="var(--we-purple)" stroke-width="4"/>
+                                <text x="30" y="53" fill="var(--we-purple)" font-size="8" font-weight="bold" text-anchor="middle">75%</text>
+
+                                <circle cx="70" cy="50" r="16" fill="none" stroke="#e2e8f0" stroke-width="4"/>
+                                <path d="M 70 34 A 16 16 0 0 1 86 50" fill="none" stroke="var(--we-accent)" stroke-width="4"/>
+                                <text x="70" y="53" fill="var(--we-accent)" font-size="8" font-weight="bold" text-anchor="middle">25%</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 7: Kanban -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">Kanban Dispatcher</h2>
+                            <p class="slide-subtitle">Workflow Automation Engine</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Lane Workflows</div>
+                                    <p class="deck-card-desc">Task cards span columns representing Pending, On Track, At Risk, Delayed, and Completed routines.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">Drag-and-Drop mutations</div>
+                                    <p class="deck-card-desc">Dragging cards across lanes invokes Express API routes, triggering SQLite status updates instantly.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Board illustration -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <line x1="20" y1="20" x2="20" y2="80" stroke="var(--border-color)" stroke-width="2"/>
+                                <line x1="50" y1="20" x2="50" y2="80" stroke="var(--border-color)" stroke-width="2"/>
+                                <line x1="80" y1="20" x2="80" y2="80" stroke="var(--border-color)" stroke-width="2"/>
+                                
+                                <rect x="4" y="25" width="12" height="15" rx="2" fill="#f8fafc" stroke="var(--border-color)" stroke-width="1"/>
+                                <rect x="24" y="40" width="22" height="15" rx="2" fill="#f1ecf9" stroke="var(--we-purple)" stroke-width="1"/>
+                                <rect x="54" y="30" width="22" height="15" rx="2" fill="#fff5ea" stroke="var(--we-accent)" stroke-width="1"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 8: Calendar & SLA -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">Operations Calendar & SLA</h2>
+                            <p class="slide-subtitle">Shift Rotations & Deadline Reminders</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Roster Calendars</div>
+                                    <p class="deck-card-desc">Enables managers to map out shifts (Morning, Evening, Emergency) for technicians and engineers.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">SLA Compliance Flags</div>
+                                    <p class="deck-card-desc">Highlights critical delays (Red flags), upcoming deadlines (Orange), and secured items (Green).</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Calendar cells -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <rect x="10" y="20" width="80" height="60" rx="4" fill="#ffffff" stroke="var(--we-purple)" stroke-width="1.5"/>
+                                <line x1="10" y1="35" x2="90" y2="35" stroke="var(--we-purple)" stroke-width="1"/>
+                                <rect x="15" y="42" width="14" height="10" rx="2" fill="var(--we-purple)" opacity="0.15"/>
+                                <rect x="35" y="42" width="14" height="10" rx="2" fill="var(--we-accent)" opacity="0.15"/>
+                                <rect x="55" y="42" width="14" height="10" rx="2" fill="var(--we-green)" opacity="0.15"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 9: Analytics -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">Analytics Insights</h2>
+                            <p class="slide-subtitle">Chart.js Stats & Printable Reports</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Analytical Visuals</div>
+                                    <p class="deck-card-desc">Incorporates dynamic line, pie, and bar charts plotting historical hardware breakdowns and technician workloads.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">Formal PDF Reports</div>
+                                    <p class="deck-card-desc">Compiles structured executive summaries complete with company headers, statistics tables, and clearance blocks.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Line graph -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <line x1="15" y1="20" x2="15" y2="80" stroke="var(--text-muted)" stroke-width="1.5"/>
+                                <line x1="15" y1="80" x2="85" y2="80" stroke="var(--text-muted)" stroke-width="1.5"/>
+                                <path d="M 15 80 L 32 60 L 48 68 L 65 35 L 82 45 L 90 20" fill="none" stroke="var(--we-purple)" stroke-width="3"/>
+                                <circle cx="65" cy="35" r="4" fill="var(--we-accent)"/>
+                                <circle cx="90" cy="20" r="4" fill="var(--we-purple)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 10: Preventive Maintenance -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">Preventive Routines</h2>
+                            <p class="slide-subtitle">Automated Maintenance Schedulers</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Inspection Templates</div>
+                                    <p class="deck-card-desc">Saves checklist structures (Daily, Weekly, Monthly) to test power supplies, racks temperature, and fiber signal values.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">Auto-generation background</div>
+                                    <p class="deck-card-desc">The server monitors dates in the background, spawning fresh tasks automatically when checking dates arrive.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Gears illustration -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="24" fill="none" stroke="var(--we-purple)" stroke-width="4" stroke-dasharray="10,5"/>
+                                <circle cx="50" cy="50" r="10" fill="none" stroke="var(--we-accent)" stroke-width="3"/>
+                                <circle cx="50" cy="50" r="4" fill="var(--we-purple)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 11: Evaluation -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">Performance Evaluation</h2>
+                            <p class="slide-subtitle">Gamified Scoring Leaderboards</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Gamification points</div>
+                                    <p class="deck-card-desc">Scores points dynamically for engineers based on fault resolution speed, card severity, and checklist accuracy.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">Evaluation Archives</div>
+                                    <p class="deck-card-desc">Compiles live leaderboards and archives annual review metrics, helping managers reward top contributors.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Podium -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <rect x="38" y="30" width="24" height="50" rx="3" fill="#f1ecf9" stroke="var(--we-purple)" stroke-width="1.5"/>
+                                <text x="50" y="55" fill="var(--we-purple)" font-size="12" font-weight="bold" text-anchor="middle">1</text>
+                                
+                                <rect x="14" y="45" width="24" height="35" rx="3" fill="#fff5ea" stroke="var(--we-accent)" stroke-width="1.5"/>
+                                <text x="26" y="65" fill="var(--we-accent)" font-size="10" font-weight="bold" text-anchor="middle">2</text>
+                                
+                                <rect x="62" y="55" width="24" height="25" rx="3" fill="#ffffff" stroke="var(--border-color)" stroke-width="1.5"/>
+                                <text x="74" y="70" fill="var(--text-muted)" font-size="10" font-weight="bold" text-anchor="middle">3</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 12: RTC -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">RTC Communications</h2>
+                            <p class="slide-subtitle">Group Chats & WebRTC Voice Rooms</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Secure Team Messenger</div>
+                                    <p class="deck-card-desc">Facilitates rapid syncs, allowing engineers to upload station photos, documents, and chat notes.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">WebRTC Peer-to-Peer Audio</div>
+                                    <p class="deck-card-desc">Installs conference rooms directly inside browsers with zero latency. Websockets act as connection brokers.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Radio signal -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="6" fill="var(--we-purple)"/>
+                                <path d="M 50 38 A 12 12 0 0 1 62 50" fill="none" stroke="var(--we-accent)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M 38 50 A 12 12 0 0 1 50 38" fill="none" stroke="var(--we-accent)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M 50 26 A 24 24 0 0 1 74 50" fill="none" stroke="var(--we-purple)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M 26 50 A 24 24 0 0 1 50 26" fill="none" stroke="var(--we-purple)" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 13: Offline Mode -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">Offline Capabilities</h2>
+                            <p class="slide-subtitle">Service Workers & Background Sync</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">sw.js Caching</div>
+                                    <p class="deck-card-desc">Service worker caches essential pages and layouts, enabling launches on remote stations without coverage.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">Sync Action Queue</div>
+                                    <p class="deck-card-desc">Caches task edits to LocalStorage and automatically replays and updates the centralized server once online.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Mobile sync -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <rect x="35" y="20" width="30" height="60" rx="6" fill="#ffffff" stroke="var(--we-purple)" stroke-width="2"/>
+                                <circle cx="50" cy="74" r="3" fill="var(--we-purple)"/>
+                                <path d="M 45 42 A 8 8 0 0 1 55 42" fill="none" stroke="var(--we-accent)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M 55 50 A 8 8 0 0 1 45 50" fill="none" stroke="var(--we-purple)" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 14: Audit & Backups -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">System Audit & Backups</h2>
+                            <p class="slide-subtitle">Security Logs & SQLite Rotation</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Audit trail logger</div>
+                                    <p class="deck-card-desc">Saves all administrative modifications to a database log. Monitors users actions and timestamps to guarantee configuration transparency.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">Automatic SQLite rotation</div>
+                                    <p class="deck-card-desc">Saves db dumps periodically under `backups/` with cleaning protocols, ensuring solid disaster recovery protection.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Disk drives -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <rect x="25" y="15" width="50" height="18" rx="2" fill="#ffffff" stroke="var(--we-purple)" stroke-width="2"/>
+                                <circle cx="35" cy="24" r="3" fill="var(--we-green)"/>
+                                <line x1="45" y1="24" x2="65" y2="24" stroke="var(--text-muted)" stroke-width="2"/>
+
+                                <rect x="25" y="40" width="50" height="18" rx="2" fill="#ffffff" stroke="var(--we-purple)" stroke-width="2"/>
+                                <circle cx="35" cy="49" r="3" fill="var(--we-accent)"/>
+                                <line x1="45" y1="49" x2="65" y2="49" stroke="var(--text-muted)" stroke-width="2"/>
+
+                                <rect x="25" y="65" width="50" height="18" rx="2" fill="#ffffff" stroke="var(--we-purple)" stroke-width="2"/>
+                                <circle cx="35" cy="74" r="3" fill="var(--we-purple)"/>
+                                <line x1="45" y1="74" x2="65" y2="74" stroke="var(--text-muted)" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 15: Upgrades -->
+                <div class="slide">
+                    <div class="slide-layout">
+                        <div class="text-column">
+                            <h2 class="slide-title">Recent System Upgrades</h2>
+                            <p class="slide-subtitle">Local fallbacks & Server Keep-alives</p>
+                            <div class="deck-cards">
+                                <div class="deck-card">
+                                    <div class="deck-card-title">Local File fallback</div>
+                                    <p class="deck-card-desc">Supports double-clicking `index.html` directly, automatically rerouting internal API requests to `http://localhost:3000`.</p>
+                                </div>
+                                <div class="deck-card orange-accent">
+                                    <div class="deck-card-title">Heartbeat Optimization</div>
+                                    <p class="deck-card-desc">Auto-shutdown grace periods optimized to 2 minutes, preventing backend crashes on page reloads or tab switches.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graphic-column">
+                            <!-- Pulse ecg -->
+                            <svg class="schematic-svg" viewBox="0 0 100 100">
+                                <path d="M 10 50 L 30 50 L 35 30 L 40 70 L 45 45 L 48 55 L 52 50 L 90 50" fill="none" stroke="var(--we-purple)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="90" cy="50" r="3" fill="var(--we-accent)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 16: Partners Team Directory -->
+                <div class="slide">
+                    <h2 class="slide-title">Success Partners & Team</h2>
+                    <p class="slide-subtitle">General Directorate Transmission Operations Directory</p>
+                    
+                    <div class="team-container">
+                        <div class="team-directory">
+                            <div class="directory-grid">
+                                <!-- Group 1 -->
+                                <div class="partner-group">
+                                    <div class="directory-section-title">👥 Transmission Operations Team</div>
+                                    <div class="member-card">
+                                        <div class="member-info">
+                                            <span class="member-name">Eng. El-Hady Ahmed</span>
+                                            <span class="member-title">Transmission Operations Senior Engineer</span>
+                                        </div>
+                                        <span class="status-badge">ACTIVE</span>
+                                    </div>
+                                    <div class="member-card">
+                                        <div class="member-info">
+                                            <span class="member-name">Eng. Hanady El-Helw</span>
+                                            <span class="member-title">Transmission Operations Engineer</span>
+                                        </div>
+                                        <span class="status-badge">ACTIVE</span>
+                                    </div>
+                                    <div class="member-card">
+                                        <div class="member-info">
+                                            <span class="member-name">Eng. Mohamed Mostafa</span>
+                                            <span class="member-title">Transmission O&M Specialist</span>
+                                        </div>
+                                        <span class="status-badge">ACTIVE</span>
+                                    </div>
+                                    <div class="member-card">
+                                        <div class="member-info">
+                                            <span class="member-name">Eng. Mohamed Salah</span>
+                                            <span class="member-title">Transmission Hardware Supervisor</span>
+                                        </div>
+                                        <span class="status-badge">ACTIVE</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Group 2 -->
+                                <div class="partner-group">
+                                    <div class="directory-section-title">📊 Key Project Stakeholders</div>
+                                    <div class="member-card">
+                                        <div class="member-info">
+                                            <span class="member-name">Eng. Ahmed Taha</span>
+                                            <span class="member-title">Transmission O&M Sector - North Sinai</span>
+                                        </div>
+                                        <span class="status-badge" style="background:#fff5ea; color:var(--we-accent); border-color:rgba(255,107,0,0.2);">SUPERVISOR</span>
+                                    </div>
+                                    <div class="member-card">
+                                        <div class="member-info">
+                                            <span class="member-name">Eng. Ahmed Metwaly</span>
+                                            <span class="member-title">First General Administration - El-Weng</span>
+                                        </div>
+                                        <span class="status-badge" style="background:#fff5ea; color:var(--we-accent); border-color:rgba(255,107,0,0.2);">DIRECTOR</span>
+                                    </div>
+                                    <div class="member-card">
+                                        <div class="member-info">
+                                            <span class="member-name">Canal Cities Gen. Directorate</span>
+                                            <span class="member-title">Regional Telecommunications Oversight</span>
+                                        </div>
+                                        <span class="status-badge" style="background:#e8f8f0; color:var(--we-green); border-color:rgba(16,185,129,0.2);">WE HQ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="load-directory-btn" id="load-team-btn">
+                            📁 LOAD REGIONAL TEAM DIRECTORY
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Controls -->
+    <footer class="app-navigation">
+        <button class="nav-btn" id="prev-slide">◀ PREVIOUS</button>
+        <div class="indicators" id="dots-box"></div>
+        <button class="nav-btn" id="next-slide">NEXT ▶</button>
+    </footer>
+
+    <script>
+        // Slide Navigation
+        const slides = document.querySelectorAll('.slide');
+        const slideItems = document.querySelectorAll('.slide-item');
+        const sectionTitle = document.getElementById('section-query-title');
+        const dotsBox = document.getElementById('dots-box');
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+
+        let currentIndex = 0;
+
+        // Auto-generate dots indicators
+        slides.forEach((_, idx) => {
+            const dot = document.createElement('div');
+            dot.classList.add('indicator-dot');
+            if (idx === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => changeSlide(idx));
+            dotsBox.appendChild(dot);
+        });
+
+        const indicatorsList = document.querySelectorAll('.indicator-dot');
+
+        // Web Audio Sound Generator for corporate clean chime
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function emitBeep(freq, type, duration, vol = 0.04) {
+            try {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = type || 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                
+                gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {}
+        }
+
+        function clickSound() {
+            emitBeep(600, 'sine', 0.05, 0.02);
+        }
+
+        function slideTransitionSound() {
+            emitBeep(800, 'sine', 0.08, 0.03);
+            setTimeout(() => emitBeep(1200, 'sine', 0.12, 0.015), 50);
+        }
+
+        function changeSlide(slideIdx) {
+            if (slideIdx < 0 || slideIdx >= slides.length) return;
+
+            slideTransitionSound();
+
+            slides[currentIndex].classList.remove('active');
+            slideItems[currentIndex].classList.remove('active');
+            indicatorsList[currentIndex].classList.remove('active');
+
+            currentIndex = slideIdx;
+
+            slides[currentIndex].classList.add('active');
+            slideItems[currentIndex].classList.add('active');
+            indicatorsList[currentIndex].classList.add('active');
+
+            slideItems[currentIndex].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+
+            const slideText = slideItems[currentIndex].querySelector('span').textContent;
+            sectionTitle.textContent = slideText;
+        }
+
+        prevBtn.addEventListener('click', () => changeSlide(currentIndex - 1));
+        nextBtn.addEventListener('click', () => changeSlide(currentIndex + 1));
+
+        slideItems.forEach((item, idx) => {
+            item.addEventListener('click', () => changeSlide(idx));
+        });
+
+        // Key bindings
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                changeSlide(currentIndex + 1);
+            } else if (e.key === 'ArrowLeft') {
+                changeSlide(currentIndex - 1);
+            } else if (e.key === ' ') {
+                e.preventDefault();
+                changeSlide((currentIndex + 1) % slides.length);
+            }
+        });
+
+        // Team Directory Roster Load animation
+        const loadBtn = document.getElementById('load-team-btn');
+        const memberCards = document.querySelectorAll('.member-card');
+
+        loadBtn.addEventListener('click', () => {
+            emitBeep(900, 'sine', 0.15, 0.04);
+            
+            memberCards.forEach((card, idx) => {
+                setTimeout(() => {
+                    card.classList.add('loaded');
+                    emitBeep(1000 + (idx * 100), 'sine', 0.05, 0.01);
+                }, (idx + 1) * 150);
+            });
+
+            loadBtn.disabled = true;
+            loadBtn.style.opacity = 0.5;
+            loadBtn.style.pointerEvents = 'none';
+        });
+    </script>
+</body>
+</html>

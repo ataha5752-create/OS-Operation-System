@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>ميزات نظام WE Control Room</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Cairo', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            direction: rtl;
+            text-align: right;
+        }
+        h1 {
+            color: #4f2683;
+            border-bottom: 3px solid #845ef2;
+            padding-bottom: 10px;
+            font-size: 26px;
+            text-align: center;
+        }
+        h2 {
+            color: #4f2683;
+            border-bottom: 1.5px solid #d8c2ff;
+            padding-bottom: 5px;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .feature-box {
+            border: 1px solid #e1dbec;
+            background: #faf8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+        .feature-title {
+            color: #4f2683;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            border-bottom: 1px dashed #d8c2ff;
+            padding-bottom: 4px;
+        }
+        .feature-desc {
+            color: #222222;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .feature-benefit {
+            color: #4f2683;
+            font-size: 13px;
+            background: #f1ecf9;
+            padding: 8px 12px;
+            border-right: 3px solid #845ef2;
+            margin-top: 6px;
+        }
+        .header-box {
+            background: #4f2683;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header-box h1 {
+            color: white;
+            border: none;
+            margin: 0;
+        }
+        .header-box p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+        .note {
+            font-weight: bold;
+            text-align: center;
+            font-size: 13px;
+            color: #b71c1c;
+            margin-bottom: 30px;
+            border: 1px solid #ffcdd2;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-box">
+        <h1>دليل ميزات نظام المتابعة والتشغيل (WE Control Room System)</h1>
+        <p>الشركة المصرية للاتصالات WE - الإدارة العامة لمدن القناة وسيناء والبحر الأحمر</p>
+        <p style="font-size: 12px; margin-top: 10px; color: #d8c2ff;">قطاع تشغيل وصيانة أجهزة التراسل</p>
+    </div>
+
+    <div class="note">
+        * تنبيه: هذا المستند تم إنشاؤه بصيغة HTML متوافقة تماماً مع برنامج Microsoft Word. يمكنك فتحه مباشرة في برنامج Word، ثم تعديله أو حفظه بصيغة Word Document (.docx) الرسمية من خلال قائمة (File -> Save As).
+    </div>
+
+    <h2>قائمة المميزات والخصائص التفصيلية للنظام:</h2>
+
+    <!-- Feature 1 -->
+    <div class="feature-box">
+        <div class="feature-title">1. لوحة التحكم الرئيسية (Dashboard)</div>
+        <div class="feature-desc">
+            تعرض الشاشة الرئيسية للنظام ملخصاً شاملاً وفورياً لمؤشرات الأداء الرئيسية (KPIs)، مثل إجمالي المهام والأعطال المفتوحة، نسبة الالتزام بالخطة الزمنية (SLA Compliance)، ومتوسط نسبة الإنجاز للعمليات الجارية.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> توفر لمتخذي القرار والمدراء نظرة عامة وسريعة على الحالة التشغيلية للشبكة في ثوانٍ معدودة عبر رسوم بيانية تفاعلية تدعم تصفية البيانات بضغطة واحدة.
+        </div>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="feature-box">
+        <div class="feature-title">2. لوحة المهام التفاعلية (Kanban Board)</div>
+        <div class="feature-desc">
+            لوحة مرئية تفاعلية مقسمة لعدة أعمدة تمثل مراحل الصيانة والتشغيل (قيد الانتظار، على المسار، في خطر، متأخر، ومكتمل). وتدعم خاصية السحب والإفلات لتبديل حالة الأعطال.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تساهم في تنظيم المهام اليومية للمهندسين وتوفر تتبعاً مرئياً دقيقاً لمسار معالجة كل عطل في أجهزة التراسل.
+        </div>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="feature-box">
+        <div class="feature-title">3. التقويم وإدارة الورديات (Calendar & Shift Management)</div>
+        <div class="feature-desc">
+            تقويم شهري لعرض المهام المجدولة وورديات المهندسين. يتيح للمشرفين النقر المزدوج على أي يوم لتوزيع وإسناد مناوبات جديدة للمهندسين بحسب القطاع (السويس، بورسعيد، جنوب سيناء، شمال سيناء، البحر الأحمر، المقر) ونوع الوردية (صباحي، مسائي، ٢٤ ساعة).
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تضمن التوزيع العادل والمنظم لمهام المناوبة وتمنع التضارب في مواعيد المهندسين مع إمكانية إعادة جدولة المهام بالسحب والإفلات.
+        </div>
+    </div>
+
+    <!-- Feature 4 -->
+    <div class="feature-box">
+        <div class="feature-title">4. لوحة التحليلات ومؤشرات الأداء (Analytics & KPIs)</div>
+        <div class="feature-desc">
+            أدوات تحليلية متطورة تقيس الأداء الفردي لكل مهندس (نسبة الإنجاز وسرعة إغلاق الأعطال)، إلى جانب مقارنة أداء القطاعات المختلفة وتصدير تقارير رسمية دورية كملفات PDF جاهزة للطباعة والاعتماد.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تساعد الإدارة في تقييم كفاءة العمل وتحديد القطاعات أو الأفراد الذين يحتاجون إلى دعم تشغيلي إضافي.
+        </div>
+    </div>
+
+    <!-- Feature 5 -->
+    <div class="feature-box">
+        <div class="feature-title">5. الخريطة الجغرافية التفاعلية (GIS Map)</div>
+        <div class="feature-desc">
+            خريطة رقمية تعرض مواقع المهام والأعطال الجارية على مستوى المحافظات جغرافياً، مما يربط المشاكل الفنية بأماكنها المادية الحقيقية.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تساهم في سرعة توجيه فرق الدعم الفني للمواقع الجغرافية الأكثر تضرراً وتحديد الأنماط المكانية للأعطال المتكررة.
+        </div>
+    </div>
+
+    <!-- Feature 6 -->
+    <div class="feature-box">
+        <div class="feature-title">6. نظام تسليم وتسلم الورديات (Shift Handover)</div>
+        <div class="feature-desc">
+            نموذج رقمي متكامل يملأه المهندس المناوب عند نهاية ورديته لتوثيق المهام المنجزة والأعطال المستمرة والملاحظات الهامة، مع دعم التوقيع الرقمي بالماوس أو اللمس لتوثيق عملية التسليم.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تضمن عدم ضياع المعلومات الحساسة أثناء تبديل الورديات وتوثيق المسئولية الكاملة عن حالة الأجهزة في كل وردية.
+        </div>
+    </div>
+
+    <!-- Feature 7 -->
+    <div class="feature-box">
+        <div class="feature-title">7. إدارة المخازن وقطع الغيار (Spare Parts / Inventory)</div>
+        <div class="feature-desc">
+            نظام جرد ومتابعة لقطع الغيار والمعدات المتوفرة في المخازن، مع تسجيل عمليات صرف وإدخال المواد ومراقبة مستويات النقص وإرسال التنبيهات.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تجنب توقف أعمال الصيانة الطارئة بسبب النقص المفاجئ في قطع الغيار والمكونات الحساسة لأجهزة التراسل.
+        </div>
+    </div>
+
+    <!-- Feature 8 -->
+    <div class="feature-box">
+        <div class="feature-title">8. دليل الشركاء وجهات الاتصال (Stakeholders Directory)</div>
+        <div class="feature-desc">
+            دليل هاتف وبريد إلكتروني تفاعلي يضم بيانات الاتصال بجميع المهندسين، المدراء، الموردين، والجهات الخارجية ذات الصلة بنظام التراسل.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تسرع وتسهل عملية التواصل والتنسيق الفوري أثناء الأزمات أو انقطاع الخدمات الحيوية.
+        </div>
+    </div>
+
+    <!-- Feature 9 -->
+    <div class="feature-box">
+        <div class="feature-title">9. تقييم أداء الفرق والمهندسين (Performance Evaluation)</div>
+        <div class="feature-desc">
+            نظام لتقييم أداء المهندسين تراكمياً عبر احتساب نقاط للمهام المنجزة بحسب الصعوبة ومعدل الالتزام بالوقت المحدد، وعرض لوحة صدارة تفاعلية لتشجيع التنافس.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> رفع إنتاجية وحماس الفريق وتحفيز المهندسين على سرعة الاستجابة للأعطال وإنجاز العمل بكفاءة.
+        </div>
+    </div>
+
+    <!-- Feature 10 -->
+    <div class="feature-box">
+        <div class="feature-title">10. سجل العمليات وأمن النظام (Activity Logs)</div>
+        <div class="feature-desc">
+            سجل أمني غير قابل للتعديل يراقب ويسجل حركات وتعديلات كافة المستخدمين على النظام مع التوقيت والبيانات المعدلة بدقة.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> حماية سرية وسلامة البيانات والمساعدة في أعمال التدقيق الإداري وتتبع التعديلات الخاطئة لمعالجتها.
+        </div>
+    </div>
+
+    <!-- Feature 11 -->
+    <div class="feature-box">
+        <div class="feature-title">11. المحادثة الفورية والغرف الصوتية (Team Chat & WebRTC)</div>
+        <div class="feature-desc">
+            نظام مدمج للمراسلة الفورية لمشاركة الملفات وتنسيق العمل، بالإضافة إلى غرف اتصال صوتي جماعية ومشاركة شاشة تعتمد على تكنولوجيا WebRTC فائقة السرعة.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تلغي الحاجة لاستخدام تطبيقات خارجية وتوفر قناة اتصال آمنة وسريعة للمهندسين أثناء العمليات الحرجة.
+        </div>
+    </div>
+
+    <!-- Feature 12 -->
+    <div class="feature-box">
+        <div class="feature-title">12. التشغيل دون اتصال ومزامنة البيانات (Offline Mode & PWA)</div>
+        <div class="feature-desc">
+            تقنية ويب تقدمية (PWA) تتيح تصفح النظام وإجراء التعديلات وحفظ الملاحظات دون اتصال بالإنترنت، على أن يتم رفعها ومزامنتها تلقائياً فور توفر الشبكة.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تضمن استمرارية تسجيل البيانات حتى في مواقع العمل البعيدة أو في حال انقطاع تغطية الشبكة.
+        </div>
+    </div>
+
+    <!-- Feature 13 -->
+    <div class="feature-box">
+        <div class="feature-title">13. التحكم المتقدم في صلاحيات المستخدمين (RBAC Access Control)</div>
+        <div class="feature-desc">
+            أدوات متطورة لمدير النظام لتحديد دور كل مستخدم (مدير، محرر، قارئ)، وتعيين الأقسام أو المحافظات المسموح له بمتابعتها، وتحديد التبويبات المتاحة له.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تمنع الوصول غير المصرح به وتوزع المهام الإدارية بحسب المسؤوليات والوظيفة التشغيلية لكل مستخدم.
+        </div>
+    </div>
+
+    <!-- Feature 14 -->
+    <div class="feature-box">
+        <div class="feature-title">14. دعم ثنائي اللغة (Arabic/English) ومصغرات ذكية</div>
+        <div class="feature-desc">
+            واجهة تدعم تبديل اللغتين العربية والإنجليزية بلمسة واحدة مع تعديل فوري لتخطيط الصفحة (RTL/LTR)، ومصغر ذكي لعرض حالة الطقس المباشرة.
+        </div>
+        <div class="feature-benefit">
+            <strong>الأهمية للتشغيل:</strong> تسهل استخدام النظام من قبل جميع فئات المستخدمين وتساعد في توقع تأثيرات الطقس على أجهزة التراسل الخارجية.
+        </div>
+    </div>
+
+</body>
+</html>

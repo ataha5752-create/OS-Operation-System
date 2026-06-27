@@ -1,0 +1,42 @@
+{
+  "name": "ops-reporting-backend",
+  "version": "1.0.0",
+  "description": "Backend server for Ops Reporting System with SQLite and JWT Authentication",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js",
+    "electron:start": "electron .",
+    "electron:build": "electron-builder --win"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^8.0.8",
+    "pptxgenjs": "^4.0.1",
+    "selfsigned": "^5.5.0",
+    "sqlite3": "^5.1.7",
+    "ws": "^8.21.0"
+  },
+  "author": "Antigravity",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^42.3.2",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.we.opscontrol",
+    "productName": "WEOpsControl",
+    "win": {
+      "target": "portable",
+      "icon": "we_logo.png"
+    },
+    "files": [
+      "**/*",
+      "!dist/**/*",
+      "!backups/**/*",
+      "!uploads/**/*"
+    ]
+  }
+}
